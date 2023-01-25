@@ -20,7 +20,7 @@ export class CaracteristicasEmpleadoCComponent {
 
     //this.servicioNieto.muestraMensaje(value); // usando el servcio
 
-      //this.caracteristicasEmpleado.emit(value);
+      this.caracteristicasEmpleado.emit(value);
     }
 
 

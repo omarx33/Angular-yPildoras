@@ -4,8 +4,9 @@
     <div class="col">
 
       <div  >
+        <a [routerLink]="['/actualiza',indice]">
       {{indice+1}}: {{empleadoLista.nombre}} {{empleadoLista.apellido}} {{empleadoLista.cargo}}
-      {{empleadoLista.salario}}
+      {{empleadoLista.salario}}</a>
       </div>
 
       <app-caracteristicas-empleado-c (caracteristicasEmpleado)="agregarCaracteristica($event)" ></app-caracteristicas-empleado-c>
@@ -17,3 +18,5 @@
     </div>
   </div>
 </div>
+
+<!-- video 27 -->
