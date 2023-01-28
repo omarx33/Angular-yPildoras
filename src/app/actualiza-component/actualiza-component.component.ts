@@ -40,7 +40,12 @@ export class ActualizaComponentComponent {
     //this.miServicio.muestraMensaje es equivalente al nombreclase->ejemplo(); en php
     //this.miServicio.muestraMensaje("Información del empleado: "+ miEmpleado.nombre); //usando el servicio
 
-    this.segundoServicio.actualizarEmpleadoServicio(this.indice,miEmpleado); //pasamos el id y la info que remplazara
+    this.segundoServicio.actualizarEmpleadoServicio(this.indice,miEmpleado); //pasamos el id y la info que remplazara, es el servicio
+    this.ruta.navigate(['']); // redirecciona a home
+  }
+
+  eliminaEmpleado(){
+    this.segundoServicio.eliminarEmpleadoServicio(this.indice); //es el servicio
     this.ruta.navigate(['']); // redirecciona a home
   }
 

@@ -37,4 +37,9 @@ export class SegundoServicioService { //export para compartirse
     empleadoModificado.salario=empleado.salario;
   }
 
+  eliminarEmpleadoServicio(id:number){
+     this.empleados.splice(id,1); //splice eliminar 1 empleado
+
+  }
+
 }
