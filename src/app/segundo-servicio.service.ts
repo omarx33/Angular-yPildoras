@@ -10,12 +10,16 @@ export class SegundoServicioService {
 //inyectar los servicios que usará
   constructor(private servicioVentanaEmergente: ServicioEmpladosService, private dataService:DataServices) { }
 
-
+  obtenerEmpleados(){
+    return this.dataService.listarEmpleados(); //observable son operaciones ascincronas
+  }
+  empleados:Empleado[]=[];
+/*
   empleados:Empleado[]=[
     new Empleado("omar","mori","analista",1500),
     new Empleado("josue","salas","bd admin",2500),
     new Empleado("marco","garcia","soporte",2200)
-  ];
+  ]; */
 
   agregarEmpleadoServicio(empleado:Empleado){
 

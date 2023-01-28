@@ -16,7 +16,12 @@ export class HomeComponentComponent {
   private segundoServicio: SegundoServicioService){}
 
     ngOnInit(): void {
-    this.empleados=this.segundoServicio.empleados; //almacena info segundo servicio
+    // this.empleados=this.segundoServicio.empleados; //almacena info segundo servicio
+    this.segundoServicio.obtenerEmpleados().subscribe(misEmpleados=>{ //muestra el array
+      console.log(misEmpleados);
+
+    })
+
   }
   empleados:Empleado[]=[];
 
