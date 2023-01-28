@@ -16,7 +16,12 @@ export class ActualizaComponentComponent {
 
   }
   empleados:Empleado[]=[];
+
+  accion:number; // almacena el valor de accion del url
+
   ngOnInit(): void {
+    this.accion=parseInt(this.route.snapshot.queryParams['accion']); //con route accedemos a la ruta de esta pagina
+
     this.empleados=this.segundoServicio.empleados; //almacena info segundo servicio
 
     this.indice=this.route.snapshot.params['id2']; // capturamos el id del url (ActivatedRoute)
@@ -33,7 +38,7 @@ export class ActualizaComponentComponent {
   volverHome(){
     this.ruta.navigate(['']);
   }
-
+  /*
   actualizaEmpleado(){
     let miEmpleado = new Empleado (this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
 
@@ -47,6 +52,25 @@ export class ActualizaComponentComponent {
   eliminaEmpleado(){
     this.segundoServicio.eliminarEmpleadoServicio(this.indice); //es el servicio
     this.ruta.navigate(['']); // redirecciona a home
+  }
+  */
+
+
+  actualizaEmpleado(){
+
+    if(this.accion== 1){
+      let miEmpleado = new Empleado (this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
+
+      this.segundoServicio.actualizarEmpleadoServicio(this.indice,miEmpleado);
+      this.ruta.navigate(['']);
+    }else{
+      this.segundoServicio.eliminarEmpleadoServicio(this.indice);
+      this.ruta.navigate(['']);
+    }
+
+
+
+
   }
 
   cuadroNombre:string="";
