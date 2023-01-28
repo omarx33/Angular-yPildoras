@@ -24,4 +24,17 @@ export class SegundoServicioService { //export para compartirse
     this.empleados.push(empleado);
   }
 
+  encontrarEmpleado(id:number){
+      let empleado:Empleado=this.empleados[id];
+      return empleado;
+  }
+
+  actualizarEmpleadoServicio(id:number,empleado:Empleado){
+    let empleadoModificado=this.empleados[id];
+    empleadoModificado.nombre=empleado.nombre;
+    empleadoModificado.apellido=empleado.apellido;
+    empleadoModificado.cargo=empleado.cargo;
+    empleadoModificado.salario=empleado.salario;
+  }
+
 }

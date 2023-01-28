@@ -21,7 +21,7 @@ export const rutas: Routes = [ // url creadas ruta lo que esta dentro de apostro
   {path:'proyectos',component:ProyectosComponentComponent},
   {path:'quienes',component:QuienesComponentComponent},
   {path:'contacto',component:ContactoComponentComponent},
-  {path:'actualiza/:id',component:ActualizaComponentComponent}
+  {path:'actualiza/:id2',component:ActualizaComponentComponent}
 
 ];
 
