@@ -14,6 +14,7 @@ import { ContactoComponentComponent } from './contacto-component/contacto-compon
 
 import { RouterModule,Routes } from '@angular/router';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component'; //ruta
+import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 
 export const rutas: Routes = [ // url creadas ruta lo que esta dentro de apostrofes
 
@@ -21,7 +22,8 @@ export const rutas: Routes = [ // url creadas ruta lo que esta dentro de apostro
   {path:'proyectos',component:ProyectosComponentComponent},
   {path:'quienes',component:QuienesComponentComponent},
   {path:'contacto',component:ContactoComponentComponent},
-  {path:'actualiza/:id2',component:ActualizaComponentComponent}
+  {path:'actualiza/:id2',component:ActualizaComponentComponent},
+  {path:'**',component:ErrorPersonalizadoComponent} //cualquier ruta errada ira aqui
 
 ];
 
