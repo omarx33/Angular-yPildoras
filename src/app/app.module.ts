@@ -15,15 +15,18 @@ import { ContactoComponentComponent } from './contacto-component/contacto-compon
 import { RouterModule,Routes } from '@angular/router';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component'; //ruta
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
+import { DataServices } from './data.services';
 
-export const rutas: Routes = [ // url creadas ruta lo que esta dentro de apostrofes
+import {HttpClientModule} from '@angular/common/http'; // delclarar para post
+
+export const rutas: Routes = [
 
   {path:'',component:HomeComponentComponent},
   {path:'proyectos',component:ProyectosComponentComponent},
   {path:'quienes',component:QuienesComponentComponent},
   {path:'contacto',component:ContactoComponentComponent},
   {path:'actualiza/:id2',component:ActualizaComponentComponent},
-  {path:'**',component:ErrorPersonalizadoComponent} //cualquier ruta errada ira aqui
+  {path:'**',component:ErrorPersonalizadoComponent}
 
 ];
 
@@ -41,9 +44,10 @@ export const rutas: Routes = [ // url creadas ruta lo que esta dentro de apostro
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(rutas) //ruta
+    RouterModule.forRoot(rutas),
+    HttpClientModule // importar
   ],
-  providers: [ServicioEmpladosService,SegundoServicioService],
+  providers: [ServicioEmpladosService,SegundoServicioService,DataServices], //nuevos servicio DataServices
   bootstrap: [AppComponent]
 })
 export class AppModule { }

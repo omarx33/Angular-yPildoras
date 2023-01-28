@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Empleado } from './empleado.model';
 import { ServicioEmpladosService } from './servicio-emplados.service';
+import { DataServices } from './data.services';
 
 @Injectable() // este en el servicio que trae de otro servicio
 
 
-export class SegundoServicioService { //export para compartirse
-
-  constructor(private servicioVentanaEmergente: ServicioEmpladosService) { }
+export class SegundoServicioService {
+//inyectar los servicios que usará
+  constructor(private servicioVentanaEmergente: ServicioEmpladosService, private dataService:DataServices) { }
 
 
   empleados:Empleado[]=[
@@ -22,6 +23,9 @@ export class SegundoServicioService { //export para compartirse
     + empleado.apellido+ "\n"
     + empleado.cargo+ "\n" +empleado.salario);
     this.empleados.push(empleado);
+
+    this.dataService.guardarEmpleados(this.empleados); //envia al post del servicio y registra
+
   }
 
   encontrarEmpleado(id:number){
