@@ -21,9 +21,9 @@ export class HomeComponentComponent {
     this.segundoServicio.obtenerEmpleados().subscribe(misEmpleados=>{ //muestra el array
       console.log(misEmpleados);
 
-      this.empleados=Object.values(misEmpleados);
+      this.empleados=Object.values(misEmpleados); //obteniendo los valores como array
 
-      this.segundoServicio.setEmpleados(this.empleados);
+      this.segundoServicio.setEmpleados(this.empleados); // mandamos el nuevo registro que llega al servicio
 
     })
 

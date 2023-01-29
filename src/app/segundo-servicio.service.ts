@@ -11,7 +11,7 @@ export class SegundoServicioService {
   constructor(private servicioVentanaEmergente: ServicioEmpladosService, private dataService:DataServices) { }
 
   setEmpleados(misEmpleados:Empleado[]){
-    this.empleados=misEmpleados;
+    this.empleados=misEmpleados; // se agrega a la lista de empleados cada que llega 1 nuevo
   }
 
   obtenerEmpleados(){
@@ -41,12 +41,15 @@ export class SegundoServicioService {
       return empleado;
   }
 
-  actualizarEmpleadoServicio(id:number,empleado:Empleado){
+  actualizarEmpleadoServicio(id:number,empleado:Empleado){ // creando el array para bd
     let empleadoModificado=this.empleados[id];
     empleadoModificado.nombre=empleado.nombre;
     empleadoModificado.apellido=empleado.apellido;
     empleadoModificado.cargo=empleado.cargo;
     empleadoModificado.salario=empleado.salario;
+
+    this.dataService.actualizarEmpleado(id,empleado);
+
   }
 
   eliminarEmpleadoServicio(id:number){
