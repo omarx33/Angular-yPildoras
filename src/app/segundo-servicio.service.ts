@@ -10,6 +10,10 @@ export class SegundoServicioService {
 //inyectar los servicios que usará
   constructor(private servicioVentanaEmergente: ServicioEmpladosService, private dataService:DataServices) { }
 
+  setEmpleados(misEmpleados:Empleado[]){
+    this.empleados=misEmpleados;
+  }
+
   obtenerEmpleados(){
     return this.dataService.listarEmpleados(); //observable son operaciones ascincronas
   }

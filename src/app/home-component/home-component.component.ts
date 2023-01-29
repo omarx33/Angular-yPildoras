@@ -17,8 +17,13 @@ export class HomeComponentComponent {
 
     ngOnInit(): void {
     // this.empleados=this.segundoServicio.empleados; //almacena info segundo servicio
+
     this.segundoServicio.obtenerEmpleados().subscribe(misEmpleados=>{ //muestra el array
       console.log(misEmpleados);
+
+      this.empleados=Object.values(misEmpleados);
+
+      this.segundoServicio.setEmpleados(this.empleados);
 
     })
 
