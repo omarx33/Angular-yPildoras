@@ -1,16 +1,18 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { LoginServices } from './login/login.service';
 
 @Injectable()
 
 export class DataServices{
 
-  constructor(private httpCliente:HttpClient){}
+  constructor(private httpCliente:HttpClient,private loginServicio:LoginServices){}
 
   listarEmpleados(){
+    const token=this.loginServicio.getIdToken();
     // obtener info de bd get
-    return this.httpCliente.get('https://clientes-b8dd7-default-rtdb.firebaseio.com/datos.json');
+    return this.httpCliente.get('https://clientes-b8dd7-default-rtdb.firebaseio.com/datos.json?auth='+ token);
   }
 
 

@@ -17,7 +17,9 @@ import { ActualizaComponentComponent } from './actualiza-component/actualiza-com
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 import { DataServices } from './data.services';
 
-import {HttpClientModule} from '@angular/common/http'; // delclarar para post
+import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component'; // delclarar para post
+import { LoginServices } from './login/login.service';
 
 export const rutas: Routes = [
 
@@ -26,6 +28,9 @@ export const rutas: Routes = [
   {path:'quienes',component:QuienesComponentComponent},
   {path:'contacto',component:ContactoComponentComponent},
   {path:'actualiza/:id2',component:ActualizaComponentComponent},
+
+  {path:'login',component:LoginComponent},
+
   {path:'**',component:ErrorPersonalizadoComponent}
 
 ];
@@ -39,7 +44,8 @@ export const rutas: Routes = [
     ProyectosComponentComponent,
     QuienesComponentComponent,
     ContactoComponentComponent,
-    ActualizaComponentComponent
+    ActualizaComponentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ export const rutas: Routes = [
     RouterModule.forRoot(rutas),
     HttpClientModule // importar
   ],
-  providers: [ServicioEmpladosService,SegundoServicioService,DataServices], //nuevos servicio DataServices
+  providers: [ServicioEmpladosService,SegundoServicioService,DataServices,LoginServices], //nuevos servicio DataServices
   bootstrap: [AppComponent]
 })
 export class AppModule { }
