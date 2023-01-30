@@ -53,7 +53,14 @@ export class SegundoServicioService {
   }
 
   eliminarEmpleadoServicio(id:number){
-     this.empleados.splice(id,1); //splice eliminar 1 empleado
+     this.empleados.splice(id,1); //splice eliminar 1 empleado en el array visual
+
+     this.dataService.eliminarEmpleado(id); // en bd
+
+   // volver a guardar los empleados para reconstruir el indice, esto si en ves de id usas contador atumatico de js
+   if(this.empleados!= null){
+    this.dataService.guardarEmpleados(this.empleados);
+   }
 
   }
 

@@ -34,5 +34,14 @@ export class DataServices{
       )
   }
 
+  eliminarEmpleado(id:number){
+    let url='https://clientes-b8dd7-default-rtdb.firebaseio.com/datos/'+id+'.json'; // en el url concatena el id
+
+    this.httpCliente.delete(url).subscribe(
+      respuesta=>console.log("se elimino correctamente"+ respuesta),
+      error=>console.log("Error: "+ error),
+    )
+}
+
 
 }
