@@ -21,13 +21,14 @@ import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component'; // delclarar para post
 import { LoginServices } from './login/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { LoginGuardian } from './login/login-guardian';
 
 export const rutas: Routes = [
 
   {path:'',component:HomeComponentComponent},
   {path:'proyectos',component:ProyectosComponentComponent},
-  {path:'quienes',component:QuienesComponentComponent},
-  {path:'contacto',component:ContactoComponentComponent},
+  {path:'quienes',component:QuienesComponentComponent, canActivate:[LoginGuardian]},
+  {path:'contacto',component:ContactoComponentComponent, canActivate:[LoginGuardian]},
   {path:'actualiza/:id2',component:ActualizaComponentComponent},
 
   {path:'login',component:LoginComponent},
@@ -55,7 +56,7 @@ export const rutas: Routes = [
     HttpClientModule // importar
   ],
   providers: [ServicioEmpladosService,SegundoServicioService,DataServices,LoginServices,
-  CookieService
+  CookieService,LoginGuardian
   ], //nuevos servicio DataServices
   bootstrap: [AppComponent]
 })
