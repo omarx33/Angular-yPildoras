@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable()
 export class LoginServices{
-  constructor(private ruta:Router){}
+  constructor(private ruta:Router, private cookies:CookieService){}
 
       token:string;
 
@@ -17,7 +18,8 @@ export class LoginServices{
             firebase.auth().currentUser?.getIdToken().then(
              token=>{
               this.token=token;
-              this.ruta.navigate(['/']);
+              this.cookies.set("token",this.token); //creando cookie y dandole el vaor y nombre token
+              this.ruta.navigate(['/']); // se genera token y redirecciona
              }
             )
           }
@@ -25,6 +27,23 @@ export class LoginServices{
 
       }
       getIdToken(){
-        return this.token;
+          return this.cookies.get("token"); //recuperamos la cookie con su nombre
+       // return this.token;
+      }
+
+      estaLogueado(){ //para el if del nav
+        return this.cookies.get("token"); //recuperamos la cookie con su nombre
+        //return this.token;
+      }
+
+      logout(){
+        firebase.auth().signOut().then(()=>{
+
+          this.token="";
+          this.cookies.set("token",this.token); // reescribimos el cookie
+          this.ruta.navigate(['/']);
+          window.location.reload();
+
+        });
       }
 }
